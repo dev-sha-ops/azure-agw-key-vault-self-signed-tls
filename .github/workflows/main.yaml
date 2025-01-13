@@ -1,0 +1,24 @@
+name: Create ServiceNow Change Request
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create_change_request:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Perform HTTPS call to ServiceNow API
+      env:
+        CHANGE_TYPE: premium
+        SHORT_DESCRIPTION: test
+        DESCRIPTION: "premium test"
+        ASSIGNMENT_GROUP: none
+        REQUESTED_BY: shadab
+      run: |
+        AUTH_HEADER=abc:123
+        echo curl -s -w "%{http_code}" -o response.json \
+          -X POST "$ENDPOINT" \
+          -H "Content-Type: application/json" \
+          -H "Authorization: Basic $AUTH_HEADER" \
+          -d "{ \"short_description\": \"$SHORT_DESCRIPTION\", \"description\": \"$DESCRIPTION\", \"assignment_group\": \"$ASSIGNMENT_GROUP\", \"requested_by\": \"$REQUESTED_BY\" }"
