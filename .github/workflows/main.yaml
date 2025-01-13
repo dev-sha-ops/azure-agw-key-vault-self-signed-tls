@@ -17,8 +17,11 @@ jobs:
         REQUESTED_BY: shadab
       run: |
         AUTH_HEADER=abc:123
-        echo curl -s -w "%{http_code}" -o response.json \
+        COMMAND=$(echo curl -s -w \"%{http_code}\" -o response.json \
           -X POST "$ENDPOINT" \
           -H \"Content-Type: application/json\" \
           -H \"Authorization: Basic $AUTH_HEADER\" \
-          -d \"{ \"short_description\": \"$SHORT_DESCRIPTION\", \"description\": \"$DESCRIPTION\", \"assignment_group\": \"$ASSIGNMENT_GROUP\", \"requested_by\": \"$REQUESTED_BY\" }\" | xargs -I {} echo "COMMAND={}" >> GITHUB_OUTPUT
+          -d \"{ \"short_description\": \"$SHORT_DESCRIPTION\", \"description\": \"$DESCRIPTION\", \"assignment_group\": \"$ASSIGNMENT_GROUP\", \"requested_by\": \"$REQUESTED_BY\" }\" )
+        echo =============================================================================================
+        echo "COMMAND=$COMMAND" >> $GITHUB_OUTPUT
+        echo $GITHUB_OUTPUT
