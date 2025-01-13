@@ -1,12 +1,12 @@
 
 
-resource "azurerm_public_ip" "this" {
-  name                = "app-gateway-public-ip"
-  location            = var.location
-  resource_group_name = var.resource_group_name
-  allocation_method   = "Static"
-  sku                 = "Standard"
-}
+# resource "azurerm_public_ip" "this" {
+#   name                = "app-gateway-public-ip"
+#   location            = var.location
+#   resource_group_name = var.resource_group_name
+#   allocation_method   = "Static"
+#   sku                 = "Standard"
+# }
 
 locals {
   frontend_port = [{
@@ -60,7 +60,7 @@ resource "azurerm_application_gateway" "this" {
   }
   frontend_ip_configuration {
     name                 = "public_ip_configuration"
-    public_ip_address_id = azurerm_public_ip.this.id
+    public_ip_address_id = null
   }
   frontend_ip_configuration {
     name                          = "private_ip_configuration"
