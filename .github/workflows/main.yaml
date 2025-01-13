@@ -1,4 +1,4 @@
-name: Create ServiceNow Change Request
+name: Create Request
 
 on:
   workflow_dispatch:
@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Perform HTTPS call to ServiceNow API
+    - name: New CR
       env:
         CHANGE_TYPE: premium
         SHORT_DESCRIPTION: test
