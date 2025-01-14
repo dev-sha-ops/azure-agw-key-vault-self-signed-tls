@@ -36,4 +36,4 @@ runs:
         cat response.json
         echo =================================
         curl --version
-        echo "command=$CURL_CMD" >> GITHUB_OUTPUT
+        echo "command=$CURL_CMD" >> $GITHUB_OUTPUT
