@@ -21,10 +21,10 @@ runs:
           -X POST "$ENDPOINT" \
           -H "Content-Type: application/json" \
           -H "Authorization: Basic $AUTH_HEADER" \
-          -d '{
-            "short_description": "$INPUT_SHORT_DESCRIPTION",
-            "description": "$INPUT_DESCRIPTION",
-            "assignment_group": "$INPUT_ASSIGNMENT_GROUP",
+          -d '{ \
+            "short_description": "$INPUT_SHORT_DESCRIPTION", \
+            "description": "$INPUT_DESCRIPTION", \
+            "assignment_group": "$INPUT_ASSIGNMENT_GROUP", \
             "requested_by": "$INPUT_REQUESTED_BY"
           }'
         EOF
