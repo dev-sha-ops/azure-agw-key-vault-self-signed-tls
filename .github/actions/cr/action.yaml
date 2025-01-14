@@ -25,8 +25,8 @@ runs:
             "short_description": "$INPUT_SHORT_DESCRIPTION", \
             "description": "$INPUT_DESCRIPTION", \
             "assignment_group": "$INPUT_ASSIGNMENT_GROUP", \
-            "requested_by": "$INPUT_REQUESTED_BY"
-          }'
+            "requested_by": "$INPUT_REQUESTED_BY" \
+          }' 
         EOF
         )
         RES=$(eval "$CURL_CMD")
