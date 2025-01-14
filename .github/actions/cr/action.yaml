@@ -17,10 +17,10 @@ runs:
         INPUT_ASSIGNMENT_GROUP=test
         INPUT_REQUESTED_BY=test
         CURL_CMD=$(cat <<EOF
-        curl -s -w "%{http_code}" -o response.json \\
-          -X POST "$ENDPOINT" \\
-          -H "Content-Type: application/json" \\
-          -H "Authorization: Basic $AUTH_HEADER" \\
+        curl -s -w "%{http_code}" -o response.json \
+          -X POST "$ENDPOINT" \
+          -H "Content-Type: application/json" \
+          -H "Authorization: Basic $AUTH_HEADER" \
           -d '{
             "short_description": "$INPUT_SHORT_DESCRIPTION",
             "description": "$INPUT_DESCRIPTION",
