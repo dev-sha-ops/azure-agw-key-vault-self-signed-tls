@@ -15,13 +15,27 @@ jobs:
         DESCRIPTION: "premium test"
         ASSIGNMENT_GROUP: none
         REQUESTED_BY: shadab
+        ENDPOINT: https://google.com
       run: |
-        AUTH_HEADER=abc:123
-        COMMAND=$(echo curl -s -w \"%{http_code}\" -o response.json \
-          -X POST "$ENDPOINT" \
-          -H \"Content-Type: application/json\" \
-          -H \"Authorization: Basic $AUTH_HEADER\" \
-          -d \"{ \"short_description\": \"$SHORT_DESCRIPTION\", \"description\": \"$DESCRIPTION\", \"assignment_group\": \"$ASSIGNMENT_GROUP\", \"requested_by\": \"$REQUESTED_BY\" }\" )
-        echo =============================================================================================
-        echo "COMMAND=$COMMAND" >> $GITHUB_OUTPUT
-        echo $GITHUB_OUTPUT
+        AUTH_HEADER=abc:123                        
+        INPUT_SHORT_DESCRIPTION=test
+        INPUT_DESCRIPTION=test
+        INPUT_ASSIGNMENT_GROUP=test
+        INPUT_REQUESTED_BY=test
+        CURL_CMD=$(cat <<EOF
+        curl -s -w "%{http_code}" -o response.json \\
+          -X POST "$ENDPOINT" \\
+          -H "Content-Type: application/json" \\
+          -H "Authorization: Basic $AUTH_HEADER" \\
+          -d '{
+            "short_description": "$INPUT_SHORT_DESCRIPTION",
+            "description": "$INPUT_DESCRIPTION",
+            "assignment_group": "$INPUT_ASSIGNMENT_GROUP",
+            "requested_by": "$INPUT_REQUESTED_BY"
+          }'
+        EOF
+        )
+        RES=$(eval "$CURL_CMD")
+        echo $RES
+        echo =================================
+        cat response.json
