@@ -4,7 +4,7 @@ outputs:
   command: 
     description: "INPUT_DESCRIPTION"
     value: ${{ steps.cr.outputs.command }}
-  http: 
+  http_code: 
     description: "INPUT_DESCRIPTION"
     value: ${{ steps.cr.outputs.http_code }}
 runs:
