@@ -1,7 +1,7 @@
 name: Create Request
 
 on:
-  workflow_dispatch:
+  push:
 
 jobs:
   create_change_request:
