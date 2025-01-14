@@ -6,39 +6,12 @@ on:
 jobs:
   create_request:
     runs-on: ubuntu-latest
-
     steps:
     - name: New CR
-      env:
-        CHANGE_TYPE: premium
-        SHORT_DESCRIPTION: test
-        DESCRIPTION: "premium test"
-        ASSIGNMENT_GROUP: none
-        REQUESTED_BY: shadab
-        ENDPOINT: https://google.com
+      id: cr
+      uses: dev-sha-ops/azure-agw-key-vault-self-signed-tls/.github/actions/cr@main
+    - name: New out
       run: |
-        AUTH_HEADER=abc:123                        
-        INPUT_SHORT_DESCRIPTION=test
-        INPUT_DESCRIPTION=test
-        INPUT_ASSIGNMENT_GROUP=test
-        INPUT_REQUESTED_BY=test
-        CURL_CMD=$(cat <<EOF
-        curl -s -w "%{http_code}" -o response.json \\
-          -X POST "$ENDPOINT" \\
-          -H "Content-Type: application/json" \\
-          -H "Authorization: Basic $AUTH_HEADER" \\
-          -d '{
-            "short_description": "$INPUT_SHORT_DESCRIPTION",
-            "description": "$INPUT_DESCRIPTION",
-            "assignment_group": "$INPUT_ASSIGNMENT_GROUP",
-            "requested_by": "$INPUT_REQUESTED_BY"
-          }'
-        EOF
-        )
-        RES=$(eval "$CURL_CMD")
-        HTTP_CODE=$(tail -c 4 <<< "$RES")
-        echo $HTTP_CODE
-        echo =================================
-        cat response.json
-        echo =================================
-        curl --version
+        echo ${{ steps.cr.outputs.command }}
+
+
