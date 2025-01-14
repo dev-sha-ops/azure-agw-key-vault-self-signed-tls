@@ -13,5 +13,7 @@ jobs:
     - name: New out
       run: |
         echo ${{ steps.cr.outputs.command }}
+        echo ++==============================++
+        echo ${{ steps.cr.outputs.http_code }}
 
 

@@ -4,6 +4,9 @@ outputs:
   command: 
     description: "INPUT_DESCRIPTION"
     value: ${{ steps.cr.outputs.command }}
+  http: 
+    description: "INPUT_DESCRIPTION"
+    value: ${{ steps.cr.outputs.http_code }}
 runs:
   using: "composite"
   steps:
@@ -19,14 +22,14 @@ runs:
         CURL_CMD=$(cat <<EOF
         curl -s -w "%{http_code}" -o response.json \
           -X POST "$ENDPOINT" \
-          -H "Content-Type: application/json" \
-          -H "Authorization: Basic $AUTH_HEADER" \
-          -d '{ \
+          -H \"Content-Type: application/json\" \
+          -H \"Authorization: Basic $AUTH_HEADER\" \
+          -d \'{ \
             "short_description": "$INPUT_SHORT_DESCRIPTION", \
             "description": "$INPUT_DESCRIPTION", \
             "assignment_group": "$INPUT_ASSIGNMENT_GROUP", \
             "requested_by": "$INPUT_REQUESTED_BY" \
-          }' 
+          }\' 
         EOF
         )
         RES=$(eval "$CURL_CMD")
@@ -36,4 +39,10 @@ runs:
         cat response.json
         echo =================================
         curl --version
+        echo "http_code=$HTTP_CODE" >> $GITHUB_OUTPUT
         echo "command=$CURL_CMD" >> $GITHUB_OUTPUT
+
+
+
+
+
