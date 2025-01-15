@@ -24,7 +24,7 @@ runs:
           -X POST "$ENDPOINT" \
           -H "Content-Type: application/json" \
           -d '{ \
-            "title": "foo", \
+            "title": "foo",\
             "body": "bar", \
             "userId": 1 \
         }'
@@ -38,7 +38,7 @@ runs:
         echo =================================
         curl --version
         echo "http_code=$HTTP_CODE" >> $GITHUB_OUTPUT
-        echo "command=$CURL_CMD >> $GITHUB_OUTPUT
+        echo "command=$CURL_CMD" >> $GITHUB_OUTPUT
 
 
 
