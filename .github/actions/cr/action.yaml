@@ -39,7 +39,7 @@ runs:
         curl --version
         echo "http_code=$HTTP_CODE" >> $GITHUB_OUTPUT
         # COMMAND=$(echo "$CURL_CMD" | sed '$!s/$/ \\/')
-        echo "command=$CURL_CMD" >> $GITHUB_ENV
+        echo "command=$CURL_CMD" >> $GITHUB_OUTPUT
 
 
 
