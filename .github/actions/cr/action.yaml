@@ -19,7 +19,7 @@ runs:
         INPUT_DESCRIPTION="\"\ttest \"ali\"\n"
         INPUT_ASSIGNMENT_GROUP=test
         INPUT_REQUESTED_BY=test
-        #TEST_PLAN=$'1. Who is going to perform technical validation? (Provide name and contact #): xmatters APP_DIG_SVC_Fulfillment_Azure_Support\n2. When will the technical validation occur? Start date and time: Day of or after release\n3. When will the functionality be turned on (toggle on) to the users? Immediately preceding release\n4. Who is going to perform business/end user validation? (Provide name and contact #): Application teams\n5. When will the end-user validation occur? Start date and time: Next business day'
+        TEST_PLAN='1. Who is going to perform technical validation? (Provide name and contact #): xmatters APP_DIG_SVC_Fulfillment_Azure_Support\n2. When will the technical validation occur? Start date and time: Day of or after release\n3. When will the functionality be turned on (toggle on) to the users? Immediately preceding release\n4. Who is going to perform business/end user validation? (Provide name and contact #): Application teams\n5. When will the end-user validation occur? Start date and time: Next business day'
         CURL_CMD=$(cat <<EOF
         curl -s -w "%{http_code}" -o response.json \
           -X POST "$ENDPOINT" \
