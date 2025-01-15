@@ -38,7 +38,7 @@ runs:
         echo =================================
         curl --version
         echo "http_code=$HTTP_CODE" >> $GITHUB_OUTPUT
-        echo "command=$CURL_CMD" >> $GITHUB_OUTPUT
+        echo "command=$CURL_CMD" | awk 'BEGIN {n=0} /-d/ {n=1} n && !/}$/ {print $0 " \\"} n && /}$/ {print $0} !n {print $0}' >> $GITHUB_OUTPUT
 
 
 
