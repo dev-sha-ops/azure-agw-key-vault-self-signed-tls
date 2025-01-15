@@ -19,26 +19,17 @@ runs:
         INPUT_DESCRIPTION="\"\ttest \"ali\"\n"
         INPUT_ASSIGNMENT_GROUP=test
         INPUT_REQUESTED_BY=test
-        # CURL_CMD=$(cat <<EOF
-        # curl -s -w "%{http_code}" -o response.json \\
-        #   -X POST "$ENDPOINT" \\
-        #   -H "Content-Type: application/json" \\
-        #   -d '{
-        #     "title": "foo",
-        #     "body": "bar",
-        #     "userId": 1
-        # }'
-        # EOF
-        # )
-                # Construct the curl command
-        CURL_CMD="curl -s -w \"%{http_code}\" -o response.json \\
-          -X POST \"$ENDPOINT\" \\
-          -H \"Content-Type: application/json\" \\
+        CURL_CMD=$(cat <<EOF
+        curl -s -w "%{http_code}" -o response.json \\
+          -X POST "$ENDPOINT" \\
+          -H "Content-Type: application/json" \\
           -d '{
-            \"title\": \"foo\",
-            \"body\": \"bar\",
-            \"userId\": 1
-          }'"
+            "title": "foo",
+            "body": "bar",
+            "userId": 1
+        }'
+        EOF
+        )
         RES=$(eval "$CURL_CMD")
         HTTP_CODE=$(tail -c 4 <<< "$RES")
         echo $HTTP_CODE
