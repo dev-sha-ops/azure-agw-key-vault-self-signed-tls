@@ -13,7 +13,7 @@ runs:
     - shell: bash
       id: cr
       run: |
-        ENDPOINT=https://google.com
+        ENDPOINT=https://jsonplaceholder.typicode.com/posts
         AUTH_HEADER=abc:123                        
         INPUT_SHORT_DESCRIPTION=test
         INPUT_DESCRIPTION="\"\ttest \"ali\"\n"
@@ -23,7 +23,6 @@ runs:
         curl -s -w "%{http_code}" -o response.json \
           -X POST "$ENDPOINT" \
           -H "Content-Type: application/json" \
-          -H "Authorization: Basic $AUTH_HEADER" \
           -d '{ \
             "short_description": "$INPUT_SHORT_DESCRIPTION", \
             "description": "$INPUT_DESCRIPTION", \
