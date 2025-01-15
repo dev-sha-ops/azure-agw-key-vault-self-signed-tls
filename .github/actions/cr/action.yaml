@@ -19,17 +19,23 @@ runs:
         INPUT_DESCRIPTION="\"\ttest \"ali\"\n"
         INPUT_ASSIGNMENT_GROUP=test
         INPUT_REQUESTED_BY=test
-        CURL_CMD=$(cat <<EOF
+        echo 'CURL_CMD=$(cat <<EOF
         curl -s -w "%{http_code}" -o response.json \\
-          -X POST "$ENDPOINT" \\
+          -X POST "https://jsonplaceholder.typicode.com/posts" \\
           -H "Content-Type: application/json" \\
-          -d '{
+          -d '\''{
             "title": "foo",
             "body": "bar",
             "userId": 1
-        }'
+        }'\'' 
         EOF
-        )
+        )' >> command.sh
+        # Print the command for debugging purposes
+        cat command.sh
+
+        # Escape newlines and set it as output
+        CURL_CMD=$(cat command.sh | tr '\n' ' ')
+        echo "CURL_CMD=$CURL_CMD" >> $GITHUB_ENV
         RES=$(eval "$CURL_CMD")
         HTTP_CODE=$(tail -c 4 <<< "$RES")
         echo $HTTP_CODE
@@ -38,7 +44,6 @@ runs:
         echo =================================
         curl --version
         echo "http_code=$HTTP_CODE" >> $GITHUB_OUTPUT
-        echo "command=$CURL_CMD" >> $GITHUB_OUTPUT
 
 
 
