@@ -20,15 +20,14 @@ runs:
         INPUT_ASSIGNMENT_GROUP=test
         INPUT_REQUESTED_BY=test
         CURL_CMD=$(cat <<EOF
-        curl -s -w "%{http_code}" -o response.json \
-          -X POST "$ENDPOINT" \
-          -H "Content-Type: application/json" \
-          -d '{ \
-            "short_description": "$INPUT_SHORT_DESCRIPTION", \
-            "description": "$INPUT_DESCRIPTION", \
-            "assignment_group": "$INPUT_ASSIGNMENT_GROUP", \
-            "requested_by": "$INPUT_REQUESTED_BY" \
-          }'
+        curl -s -w "%{http_code}" -o response.json \\
+          -X POST "$ENDPOINT" \\
+          -H "Content-Type: application/json" \\
+          -d '{
+            "title": "foo",
+            "body": "bar",
+            "userId": 1
+        }'
         EOF
         )
         RES=$(eval "$CURL_CMD")
