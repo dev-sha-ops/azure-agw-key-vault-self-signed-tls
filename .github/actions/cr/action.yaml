@@ -23,16 +23,16 @@ runs:
         curl -s -w "%{http_code}" -o response.json \
           -X POST "$ENDPOINT" \
           -H "Content-Type: application/json" \
-          -d '{
-            "title": "foo",
-            "body": "bar",
-            "userId": 1
+          -d '{ \
+            "title": "foo",\
+            "body": "bar", \
+            "userId": 1 \
         }'
         EOF
         )
-        RES=$(eval "$CURL_CMD")
-        HTTP_CODE=$(tail -c 4 <<< "$RES")
-        echo $HTTP_CODE
+        # RES=$(eval "$CURL_CMD")
+        # HTTP_CODE=$(tail -c 4 <<< "$RES")
+        # echo $HTTP_CODE
         echo =================================
         cat response.json
         echo =================================
