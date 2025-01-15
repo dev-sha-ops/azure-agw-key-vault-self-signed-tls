@@ -30,7 +30,7 @@ runs:
         }'
         EOF
         )
-        # RES=$(eval "$CURL_CMD")
+        RES=$(eval "$CURL_CMD")
         # HTTP_CODE=$(tail -c 4 <<< "$RES")
         # echo $HTTP_CODE
         echo =================================
