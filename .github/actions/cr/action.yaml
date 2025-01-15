@@ -38,6 +38,7 @@ runs:
         echo =================================
         curl --version
         echo "http_code=$HTTP_CODE" >> $GITHUB_OUTPUT
+        CURL_CMD=$(echo "$CURL_CMD" | sed ':a;N;$!ba;s/\n[^\n]*$/&/;s/\n/ \\\n/g')
         echo "command=$CURL_CMD" >> $GITHUB_OUTPUT
 
 
