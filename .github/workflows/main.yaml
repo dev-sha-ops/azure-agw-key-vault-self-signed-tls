@@ -15,5 +15,7 @@ jobs:
         echo ${{ steps.cr.outputs.command }}
         echo ++==============================++
         echo ${{ steps.cr.outputs.http_code }}
+        echo ++==============================++
+        echo ${{ steps.cr.outputs.number }}
 
 
