@@ -16,7 +16,7 @@ runs:
     - name: Setup Flux CLI
       uses: fluxcd/flux2/action/@main
       with:
-        version: "v2.0.2"
+        version: "v2.40.0"
     - shell: bash
       id: cr
       run: |
