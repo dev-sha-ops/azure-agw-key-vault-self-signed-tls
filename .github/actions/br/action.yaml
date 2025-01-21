@@ -19,7 +19,7 @@ runs:
         # Loop to generate multiple lines
         for i in {1..5}; do
           echo 'JSON_RESPONSE<<EOF' >> $GITHUB_OUTPUT
-          echo "hello $i" >> $GITHUB_OUTPUT
+          echo "======a=====\\n hello $i" >> $GITHUB_OUTPUT
           echo 'EOF' >> $GITHUB_OUTPUT
         done
 
