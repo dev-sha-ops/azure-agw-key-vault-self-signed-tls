@@ -19,9 +19,7 @@ runs:
         # Loop to generate multiple lines
         for i in {1..5}; do
           echo 'JSON_RESPONSE<<EOF' >> $GITHUB_OUTPUT
-          echo "Hello\\" >> $GITHUB_OUTPUT
-          echo "\\nLine $i\\" >> $GITHUB_OUTPUT
-          echo "\\n=======Bye=======\\" >> $GITHUB_OUTPUT
+          echo "hello $i" >> $GITHUB_OUTPUT
           echo 'EOF' >> $GITHUB_OUTPUT
         done
 
