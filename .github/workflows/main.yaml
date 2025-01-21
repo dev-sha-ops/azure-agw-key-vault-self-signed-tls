@@ -11,8 +11,9 @@ jobs:
       id: cr
       uses: dev-sha-ops/azure-agw-key-vault-self-signed-tls/.github/actions/br@main
     - name: New out
+      shell: bash
       run: |
-        echo ${{ steps.cr.outputs.ENCODED_OUTPUT }}
-        echo ${{ steps.cr.outputs.ENCODED_OUTPUT }} | base64 --decode
+        #!/bin/bash
+        echo -e ${{ steps.cr.outputs.ENCODED_OUTPUT }}
 
 
