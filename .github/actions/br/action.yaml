@@ -18,7 +18,9 @@ runs:
 
         # Loop to generate multiple lines
         for i in {1..5}; do
+          OUTPUT+="Hello\n"
           OUTPUT+=$(echo "Line $i")$'\n'
+          OUTPUT+="=======Bye======="
         done
 
         # Encode multi-line output to Base64
