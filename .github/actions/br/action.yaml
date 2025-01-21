@@ -25,8 +25,5 @@ runs:
         BASE64_OUTPUT=$(echo -e "$OUTPUT" | base64 -w 0)
 
         # Append encoded output to GITHUB_ENV without overriding
-        {
-          echo "ENCODED_OUTPUT<<EOF"
-          echo "$BASE64_OUTPUT"
-          echo "EOF"
-        } >> "$GITHUB_OUPUT"
+        
+        echo "ENCODED_OUTPUT=$BASE64_OUTPUT" "$GITHUB_OUPUT"
