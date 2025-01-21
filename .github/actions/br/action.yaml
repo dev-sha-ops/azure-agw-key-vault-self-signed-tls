@@ -24,8 +24,8 @@ runs:
         echo $ERROR_LOG
         # Loop to generate multiple lines
         for i in {1..5}; do
-          echo 'JSON_RESPONSE<<EOF' >> $GITHUB_OUTPUT
-          echo "======a=====\\\n hello $i" >> $GITHUB_OUTPUT
-          echo 'EOF' >> $GITHUB_OUTPUT
+          echo "$i $ERROR_LOG\n" >> $OUTPUT
         done
-
+        var=$(printf '%s' "$OUTPUT"  | base64)
+        echo "JSON_RESPONSE=$var" >> $GITHUB_OUTPUT
+        

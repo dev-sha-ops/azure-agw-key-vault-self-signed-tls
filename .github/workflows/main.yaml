@@ -15,4 +15,6 @@ jobs:
       run: |
         #!/bin/bash
         echo -e ${{ steps.cr.outputs.ENCODED_OUTPUT }} || true 
+        echo =============================================================
+        echo `echo ${{ steps.cr.outputs.ENCODED_OUTPUT }} | base64 --decode`
 
