@@ -26,11 +26,9 @@ runs:
         for i in {1..5}; do
           OUTPUT+="$i $ERROR_LOG\n"  # Append to OUTPUT variable
         done
-
-        # Encode the final OUTPUT to Base64
-        var=$(printf '%s' "$OUTPUT" | base64)
-
-        # Export the Base64-encoded string as GitHub output
-        echo "JSON_RESPONSE=$(echo $var)" >> $GITHUB_OUTPUT
+        OUTPUT="${OUTPUT//'%'/'%25'}"
+        OUTPUT="${OUTPUT//$'\n'/'%0A'}"
+        OUTPUT="${OUTPUT//$'\r'/'%0D'}"
+        echo "JSON_RESPONSE=$OUTPUT" >> $GITHUB_OUTPUT
 
         
