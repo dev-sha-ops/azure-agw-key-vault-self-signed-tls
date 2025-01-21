@@ -13,6 +13,7 @@ runs:
       shell: bash
       id: cr
       run: |
+        #!/bin/bash
         # Initialize an empty variable
         OUTPUT=""
         ERROR_LOG=$(cat <<EOF
@@ -24,7 +25,7 @@ runs:
 
         # Loop to generate multiple lines and append to OUTPUT variable
         for i in {1..5}; do
-          OUTPUT+="$i $ERROR_LOG\n"  # Append to OUTPUT variable
+          OUTPUT+="$ERROR_LOG"  # Append to OUTPUT variable
         done
         OUTPUT="${OUTPUT//'%'/'%25'}"
         OUTPUT="${OUTPUT//$'\n'/'%0A'}"
