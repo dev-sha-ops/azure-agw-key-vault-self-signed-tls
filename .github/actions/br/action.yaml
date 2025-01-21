@@ -31,6 +31,6 @@ runs:
         var=$(printf '%s' "$OUTPUT" | base64)
 
         # Export the Base64-encoded string as GitHub output
-        echo `JSON_RESPONSE=$(echo $var)` >> $GITHUB_OUTPUT
+        echo "JSON_RESPONSE=$(echo $var)" >> $GITHUB_OUTPUT
 
         
