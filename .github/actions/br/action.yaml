@@ -4,7 +4,7 @@ description: "Runs a Bash loop, encodes output, and exports it"
 outputs: 
   ENCODED_OUTPUT:
     description: none
-    value: ${{ steps.cr.outputs.ENCODED_OUTPUT }}
+    value: ${{ steps.cr.outputs.JSON_RESPONSE }}
 
 runs:
   using: "composite"
@@ -18,9 +18,6 @@ runs:
 
         # Loop to generate multiple lines
         for i in {1..5}; do
-          echo "Hello\n"
-          echo $(echo "Line $i")$'\n'
-          echo "=======Bye======="
           echo 'JSON_RESPONSE<<EOF' >> $GITHUB_OUTPUT
           echo "Hello\n" >> $GITHUB_OUTPUT
           echo $(echo "Line $i")$'\n' >> $GITHUB_OUTPUT
