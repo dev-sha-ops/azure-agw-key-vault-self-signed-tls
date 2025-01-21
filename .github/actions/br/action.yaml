@@ -21,10 +21,11 @@ runs:
         Message:               Helm install failed for release default/nginx-helm with chart nginx@13.2.19: context deadline exceeded
         EOF
         )
+        echo $ERROR_LOG
         # Loop to generate multiple lines
         for i in {1..5}; do
           echo 'JSON_RESPONSE<<EOF' >> $GITHUB_OUTPUT
-          echo "======a=====\\\n hello $i $ERROR_LOG" >> $GITHUB_OUTPUT
+          echo "======a=====\\\n hello $i" >> $GITHUB_OUTPUT
           echo 'EOF' >> $GITHUB_OUTPUT
         done
 
