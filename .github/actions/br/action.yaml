@@ -28,4 +28,4 @@ runs:
 
         # Append encoded output to GITHUB_ENV without overriding
         
-        echo "ENCODED_OUTPUT=$BASE64_OUTPUT" >> "$GITHUB_OUPUT"
+        echo "ENCODED_OUTPUT=$BASE64_OUTPUT" >> $GITHUB_OUPUT
