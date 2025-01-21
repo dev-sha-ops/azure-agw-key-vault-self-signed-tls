@@ -9,13 +9,9 @@ jobs:
     steps:
     - name: New CR
       id: cr
-      uses: dev-sha-ops/azure-agw-key-vault-self-signed-tls/.github/actions/cr@main
+      uses: dev-sha-ops/azure-agw-key-vault-self-signed-tls/.github/actions/br@main
     - name: New out
       run: |
-        echo ${{ steps.cr.outputs.command }}
-        echo ++==============================++
-        echo ${{ steps.cr.outputs.http_code }}
-        echo ++==============================++
-        echo ${{ steps.cr.outputs.number }}
+        echo ${{ steps.cr.outputs.ENCODED_OUTPUT }}
 
 

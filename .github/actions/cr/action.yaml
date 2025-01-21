@@ -52,7 +52,9 @@ runs:
         curl --version
         echo "http_code=$HTTP_CODE" >> $GITHUB_OUTPUT
         grep "number" response.json | cut -d '"' -f4 
-        grep "number" response.json | cut -d '"' -f4  | xargs -I {} echo "number={}" >> $GITHUB_OUTPUT
+        
+        echo "number=$(grep "number" response.json | cut -d '"' -f4  | xargs -I {} )" >> $GITHUB_OUTPUT
+
         echo "command=$CURL_CMD" >> $GITHUB_OUTPUT
 
 

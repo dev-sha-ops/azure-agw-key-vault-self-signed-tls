@@ -1,0 +1,32 @@
+name: "Loop Output Action"
+description: "Runs a Bash loop, encodes output, and exports it"
+
+outputs: 
+  ENCODED_OUTPUT:
+    description: none
+    value: ${{ steps.cr.outputs.ENCODED_OUTPUT }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Run Bash Loop and Encode Output
+      shell: bash
+      id: cr
+      run: |
+        # Initialize an empty variable
+        OUTPUT=""
+
+        # Loop to generate multiple lines
+        for i in {1..5}; do
+          OUTPUT+=$(echo "Line $i")$'\n'
+        done
+
+        # Encode multi-line output to Base64
+        BASE64_OUTPUT=$(echo -e "$OUTPUT" | base64 -w 0)
+
+        # Append encoded output to GITHUB_ENV without overriding
+        {
+          echo "ENCODED_OUTPUT<<EOF"
+          echo "$BASE64_OUTPUT"
+          echo "EOF"
+        } >> "$GITHUB_OUPUT"
