@@ -18,14 +18,13 @@ runs:
 
         # Loop to generate multiple lines
         for i in {1..5}; do
-          OUTPUT+="Hello\n"
-          OUTPUT+=$(echo "Line $i")$'\n'
-          OUTPUT+="=======Bye======="
+          echo "Hello\n"
+          echo $(echo "Line $i")$'\n'
+          echo "=======Bye======="
+          echo 'JSON_RESPONSE<<EOF' >> $GITHUB_OUTPUT
+          echo "Hello\n" >> $GITHUB_OUTPUT
+          echo $(echo "Line $i")$'\n' >> $GITHUB_OUTPUT
+          echo "=======Bye=======" >> $GITHUB_OUTPUT
+          echo 'EOF' >> $GITHUB_OUTPUT
         done
 
-        # Encode multi-line output to Base64
-        BASE64_OUTPUT=$(echo -e "$OUTPUT" | base64 -w 0)
-
-        # Append encoded output to GITHUB_ENV without overriding
-        
-        echo "ENCODED_OUTPUT=$OUTPUT" >> $GITHUB_OUPUT
