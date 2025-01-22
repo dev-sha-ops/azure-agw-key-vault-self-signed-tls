@@ -14,5 +14,5 @@ jobs:
       shell: bash
       run: |
         #!/bin/bash
-        echo -e ${{ steps.cr.outputs.ENCODED_OUTPUT }} || true 
+        echo -n ${{ steps.cr.outputs.ENCODED_OUTPUT }}
 
