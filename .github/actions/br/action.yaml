@@ -37,4 +37,8 @@ runs:
         echo "2 Lets add a second bullet point" >> $TMPFILE
         echo "3 How about a third one?" >> $TMPFILE
         echo "JSON_RESPONSE=$(pwd)/$TMPFILE" >> "$GITHUB_OUTPUT"
-        
+    - name: Cleanup
+      shell: bash
+      if: cleanup()
+      run: |
+        rm -f  $(echo {{ steps.cr.outputs.JSON_RESPONSE } ${{ steps.br.outputs.JSON_RESPONSE }})
