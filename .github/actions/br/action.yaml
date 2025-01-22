@@ -30,6 +30,8 @@ runs:
         OUTPUT="${OUTPUT//'%'/'%25'}"
         OUTPUT="${OUTPUT//$'\n'/'%0A'}"
         OUTPUT="${OUTPUT//$'\r'/'%0D'}"
-        echo "JSON_RESPONSE=$OUTPUT" >> $GITHUB_OUTPUT
+        echo $OUTPUT
+        RES=$(echo  "$CURL_CMD" | base64)
+        echo "JSON_RESPONSE=$RES" >> $GITHUB_OUTPUT
 
         
