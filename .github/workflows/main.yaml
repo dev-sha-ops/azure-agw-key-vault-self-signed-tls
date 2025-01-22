@@ -15,6 +15,7 @@ jobs:
         cat `echo ${{ steps.cr.outputs.ENCODED_OUTPUT}}`
 
     - name: New BR out
+      if: always()
       run: |
-        cat `echo ${{ steps.cr.outputs.SAMPLE_OUTPUT}}`
+        cat $(echo ${{ steps.cr.outputs.SAMPLE_OUTPUT}})
 
