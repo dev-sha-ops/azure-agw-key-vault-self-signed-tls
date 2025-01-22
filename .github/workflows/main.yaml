@@ -12,14 +12,17 @@ jobs:
       uses: dev-sha-ops/azure-agw-key-vault-self-signed-tls/.github/actions/br@main
     - name: New CR out
       run: |
+        echo "============================"
         cat ${{ steps.cr.outputs.ENCODED_OUTPUT}}
-
+        echo "============================"
     - name: New BR out
       if: always()
       run: |
+        echo "============================"
         while IFS= read -r line; do
             echo "$line"
         done < ${{ steps.cr.outputs.SAMPLE_OUTPUT }}
+        echo "============================"
 
     - name: Cleanup
       shell: bash
