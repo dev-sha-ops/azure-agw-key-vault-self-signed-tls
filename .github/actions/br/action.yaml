@@ -22,7 +22,7 @@ runs:
         echo "" >> $TMPFILE # this is a blank line
         echo "- Lets add a bullet point" >> $TMPFILE
         echo "- Lets add a second bullet point" >> $TMPFILE
-        echo "- How about a third one?" >> $TMPFILE
+        echo "- How about a third one?\"" >> $TMPFILE
         echo "JSON_RESPONSE=$(pwd)/$TMPFILE" >> "$GITHUB_OUTPUT"
 
     - name: Run Bash Loop and Encode Output
