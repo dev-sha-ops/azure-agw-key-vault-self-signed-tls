@@ -15,5 +15,5 @@ jobs:
       run: |
         #!/bin/bash
         sudo -i
-        echo -n ${{ steps.cr.outputs.ENCODED_OUTPUT }}
+        cat `echo ${{ steps.cr.outputs.ENCODED_OUTPUT}}`
 
