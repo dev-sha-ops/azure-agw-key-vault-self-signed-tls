@@ -23,4 +23,5 @@ jobs:
       shell: bash
       if: always()
       run: |
-        rm -f {{ steps.cr.outputs.JSON_RESPONSE } ${{ steps.br.outputs.JSON_RESPONSE }}
+        set -e
+        rm -f {{ steps.cr.outputs.SAMPLE_OUTPUT } ${{ steps.cr.outputs.ENCODED_OUTPUT }}
