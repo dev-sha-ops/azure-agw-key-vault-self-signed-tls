@@ -24,4 +24,4 @@ jobs:
       if: always()
       run: |
         set -e
-        rm -f ${{ steps.cr.outputs.SAMPLE_OUTPUT }} ${{ steps.cr.outputs.ENCODED_OUTPUT }}
+        rm  ${{ steps.cr.outputs.SAMPLE_OUTPUT }} ${{ steps.cr.outputs.ENCODED_OUTPUT }}
