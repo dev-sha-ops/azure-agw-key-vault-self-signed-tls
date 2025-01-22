@@ -13,18 +13,9 @@ runs:
       shell: bash
       id: cr
       run: |
-        #!/bin/bash
-        for i in 1 2 3 4 5
-        do
-          echo "Welcome $i times"      >> file
-          echo "=======  $i =========" >> file
-          cat << EOF >> file
-          $i
-          Message:               Failed to install after 1 attempt(s)
-          Message:               Helm install failed for release default/nginx-helm with chart nginx@13.2.19: context deadline exceeded
-          Message:               Helm install failed for release default/nginx-helm with chart nginx@13.2.19: context deadline exceeded 
-        EOF
-        done
-        echo "JSON_RESPONSE=$(cat file)" >> "$GITHUB_OUTPUT"
-
-        
+        echo "This is the lead in sentence for the list" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY # this is a blank line
+        echo "- Lets add a bullet point" >> $GITHUB_STEP_SUMMARY
+        echo "- Lets add a second bullet point" >> $GITHUB_STEP_SUMMARY
+        echo "- How about a third one?" >> $GITHUB_STEP_SUMMARY
+        echo "JSON_RESPONSE=$GITHUB_STEP_SUMMARY" >> "$GITHUB_OUTPUT"
