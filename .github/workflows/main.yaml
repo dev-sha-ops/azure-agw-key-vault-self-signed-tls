@@ -11,16 +11,10 @@ jobs:
       id: cr
       uses: dev-sha-ops/azure-agw-key-vault-self-signed-tls/.github/actions/br@main
     - name: New CR out
-      shell: bash
       run: |
-        #!/bin/bash
-        sudo -i
         cat `echo ${{ steps.cr.outputs.ENCODED_OUTPUT}}`
 
     - name: New BR out
-      shell: bash
       run: |
-        #!/bin/bash
-        sudo -i
         cat `echo ${{ steps.cr.outputs.SAMPLE_OUTPUT}}`
 
