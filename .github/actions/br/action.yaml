@@ -13,24 +13,10 @@ runs:
       shell: bash
       id: cr
       run: |
-        #!/bin/bash
-        # Initialize an empty variable
-        OUTPUT=""
-        ERROR_LOG=$(cat <<EOF
-        Message:               Failed to install after 1 attempt(s)
-        Message:               Helm install failed for release default/nginx-helm with chart nginx@13.2.19: context deadline exceeded
-        Message:               Helm install failed for release default/nginx-helm with chart nginx@13.2.19: context deadline exceeded
-        EOF
-        )
-
-        # Loop to generate multiple lines and append to OUTPUT variable
-        for i in {1..5}; do
-          OUTPUT+="$ERROR_LOG"  # Append to OUTPUT variable
-        done
-        OUTPUT="${OUTPUT//'%'/'%25'}"
-        OUTPUT="${OUTPUT//$'\n'/'%0A'}"
-        OUTPUT="${OUTPUT//$'\r'/'%0D'}"
-        RES=$(echo  "$OUTPUT" | base64)
-        echo "JSON_RESPONSE=$RES" >> $GITHUB_OUTPUT
+        {
+          echo 'JSON_RESPONSE<<EOF'
+          curl https://example.com
+          echo EOF
+        } >> "$GITHUB_OUTPUT"
 
         
