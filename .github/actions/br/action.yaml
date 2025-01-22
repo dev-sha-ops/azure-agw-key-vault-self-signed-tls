@@ -16,21 +16,25 @@ runs:
       shell: bash
       id: cr
       run: |
-        echo "This is the lead in sentence for the list" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY # this is a blank line
-        echo "- Lets add a bullet point" >> $GITHUB_STEP_SUMMARY
-        echo "- Lets add a second bullet point" >> $GITHUB_STEP_SUMMARY
-        echo "- How about a third one?" >> $GITHUB_STEP_SUMMARY
-        echo "JSON_RESPONSE=$GITHUB_STEP_SUMMARY" >> "$GITHUB_OUTPUT"
+        TMPFILE=cr-tmpfile
+        > $TMPFILE
+        echo "This is the lead in sentence for the list" >> $TMPFILE
+        echo "" >> $TMPFILE # this is a blank line
+        echo "- Lets add a bullet point" >> $TMPFILE
+        echo "- Lets add a second bullet point" >> $TMPFILE
+        echo "- How about a third one?" >> $TMPFILE
+        echo "JSON_RESPONSE=$(pwd)/$TMPFILE" >> "$GITHUB_OUTPUT"
 
     - name: Run Bash Loop and Encode Output
       shell: bash
       id: br
       run: |
-        echo "This is the lead in sentence for the list" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY # this is a blank line
-        echo "1 Lets add a bullet point" >> $GITHUB_STEP_SUMMARY
-        echo "2 Lets add a second bullet point" >> $GITHUB_STEP_SUMMARY
-        echo "3 How about a third one?" >> $GITHUB_STEP_SUMMARY
-        echo "JSON_RESPONSE=$GITHUB_STEP_SUMMARY" >> "$GITHUB_OUTPUT"
+        TMPFILE=br-tmpfile
+        > $TMPFILE
+        echo "This is the lead in sentence for the list" >> $TMPFILE
+        echo "" >> $TMPFILE # this is a blank line
+        echo "1 Lets add a bullet point" >> $TMPFILE
+        echo "2 Lets add a second bullet point" >> $TMPFILE
+        echo "3 How about a third one?" >> $TMPFILE
+        echo "JSON_RESPONSE=$(pwd)/$TMPFILE" >> "$GITHUB_OUTPUT"
         
