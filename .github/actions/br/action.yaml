@@ -15,7 +15,7 @@ runs:
       run: |
         echo 'JSON_RESPONSE<<EOF'
         curl https://example.com
-        echo EOF
-        echo "JSON_RESPONSE=$JSON_RESPONSE" >> "$GITHUB_OUTPUT"
+        echo EOF >> $GITHUB_OUTPUT
+        # echo "JSON_RESPONSE=$JSON_RESPONSE" >> "$GITHUB_OUTPUT"
 
         
