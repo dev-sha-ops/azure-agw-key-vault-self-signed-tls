@@ -19,3 +19,8 @@ jobs:
       run: |
         cat $(echo ${{ steps.cr.outputs.SAMPLE_OUTPUT}})
 
+    - name: Cleanup
+      shell: bash
+      if: always()
+      run: |
+        rm -f {{ steps.cr.outputs.JSON_RESPONSE } ${{ steps.br.outputs.JSON_RESPONSE }}

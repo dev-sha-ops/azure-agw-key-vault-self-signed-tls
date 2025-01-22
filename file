@@ -1,0 +1,4 @@
+
+Message:               Failed to install after 1 attempt(s)
+Message:               Helm install failed for release default/nginx-helm with chart nginx@13.2.19: context deadline exceeded
+Message:               Helm install failed for release default/nginx-helm with chart nginx@13.2.19: context deadline exceeded 
