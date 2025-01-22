@@ -13,10 +13,9 @@ runs:
       shell: bash
       id: cr
       run: |
-        {
-          echo 'JSON_RESPONSE<<EOF'
-          curl https://example.com
-          echo EOF
-        } >> "$GITHUB_OUTPUT"
+        echo 'JSON_RESPONSE<<EOF'
+        curl https://example.com
+        EOF
+        echo "JSON_RESPONSE=$JSON_RESPONSE" >> "$GITHUB_OUTPUT"
 
         
