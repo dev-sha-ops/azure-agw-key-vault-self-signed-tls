@@ -12,12 +12,12 @@ jobs:
       uses: dev-sha-ops/azure-agw-key-vault-self-signed-tls/.github/actions/br@main
     - name: New CR out
       run: |
-        cat `echo ${{ steps.cr.outputs.ENCODED_OUTPUT}}`
+        cat ${{ steps.cr.outputs.ENCODED_OUTPUT}}
 
     - name: New BR out
       if: always()
       run: |
-        cat $(echo ${{ steps.cr.outputs.SAMPLE_OUTPUT}})
+        cat ${{ steps.cr.outputs.SAMPLE_OUTPUT}}
 
     - name: Cleanup
       shell: bash
